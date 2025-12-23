@@ -1,13 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export', // Enable static HTML export for cPanel hosting
   images: {
     domains: [],
-    unoptimized: true, // Allow local images without optimization
+    unoptimized: true, // Required for static export
   },
   reactStrictMode: true,
-  // Enable static file serving from public directory
-  publicRuntimeConfig: {},
+  trailingSlash: true, // Adds trailing slashes for better cPanel compatibility
 }
 
 module.exports = nextConfig
-

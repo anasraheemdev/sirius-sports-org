@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Moon, Sun, Menu, X } from 'lucide-react'
 import { useTheme } from './ThemeProvider'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 export default function Navigation() {
@@ -49,22 +50,27 @@ export default function Navigation() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`w-full max-w-6xl transition-all duration-500 ${
-          isScrolled
-            ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50'
-            : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg border border-gray-200/30 dark:border-gray-700/30'
-        } rounded-full px-6 md:px-8 py-2`}
+        className={`w-full max-w-6xl transition-all duration-500 ${isScrolled
+          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50'
+          : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg border border-gray-200/30 dark:border-gray-700/30'
+          } rounded-full px-6 md:px-8 py-2`}
       >
         <div className="flex items-center justify-between h-12">
           {/* Logo */}
           <Link href="/">
             <motion.div
-              className="text-base md:text-lg lg:text-xl font-bold bg-gradient-navy-blue bg-clip-text text-transparent flex items-center gap-2 whitespace-nowrap cursor-pointer"
+              className="flex items-center cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="w-2 h-2 bg-gradient-navy-blue rounded-full animate-pulse"></span>
-              <span className="font-extrabold tracking-tight">Sirius Sports</span>
+              <Image
+                src="/assets/logo.png"
+                alt="Sirius Sports"
+                width={140}
+                height={40}
+                className="h-8 md:h-10 w-auto object-contain"
+                priority
+              />
             </motion.div>
           </Link>
 
